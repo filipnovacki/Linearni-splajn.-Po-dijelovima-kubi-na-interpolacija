@@ -55,10 +55,38 @@
 		\end{align*}
 		
 		Zatim moramo pronaći pravac koji je razapet između tih dviju točaka. To možemo napraviti po formuli koja je opće poznata:
-		\begin{equation*}
+		\begin{equation}
 		y=\biggr{(}\frac{y_{i+1}-y_i}{x_{i+1}-x_i}\biggr{)}(x-x_i)+y_i
-		\end{equation*}
+		\label{pravac}
+		\end{equation}
+		
+		
 		\subsection{$f(x)=\sin x$}
+		Ovaj ćemo zadatak riješiti za $n=1, 2,\ldots, 40$. S obzirom da nema nekog smisla pisati za svaki interval pojedinačno, ovaj ćemo zadatak riješiti programskim putem, a ručno ćemo pokazati samo na jednom primjeru.
+		\begin{align*}
+			f(x)=\sin (x),& \quad x\in [0, 2\pi]\\
+			n&=40\\
+			a&=0\\
+			b&=2\pi\\
+		\end{align*}
+		Pronađimo prva dva čvora.
+		\begin{align*}
+			x_0=&0\quad\rightarrow \quad y_0=f(0)=0\\
+			x_1=&a+ih\\=&0+1\frac{2\pi-0}{40}\\
+				=&0.15707963267948966\\
+			y_1=&f\biggr{(}\frac{2\pi}{40}\biggr{)}\\=&0.15707963267948966
+		\end{align*}
+		Uvrštavanjem ovih podataka u jednadžbu \ref{pravac} dobivamo:
+		\begin{equation}
+			y=1.0041242039539873x
+			\label{linInt1}
+		\end{equation}
+		Kad razmislimo o rješenju, vidimo da ono ima smisla jer prolazi kroz ishodište, a nagib je skoro jednak 1, što također ima smisla jer koordinate točke skoro jednake. Osim toga, i grafički rješenje ima smisla, što možemo vidjeti na slici \ref{linInterSlika1}.
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{slike/usporedba40.png}
+			\caption{Usporedba funkcije $f(x)=\sin (x)$ i linearne interpolacije po jednadžbi pravca iz jednadžbe \ref{linInt1}. Plavom bojom je prikazana interpolacija, a narančastom funkcija. Izvor: autorska izrada}
+			\label{linInterSlika1}
+		\end{figure}
 		\subsection{$g(x)=\frac{1}{x^2 +1}$}
 	\section{Opis nedostataka linearnih splajnova}
 	\section{Opis po dijelovima kubične interpolacije}
