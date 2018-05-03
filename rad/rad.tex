@@ -38,7 +38,26 @@
 	\section{Opis linearnog splajna}
 	
 	\section{Primjeri}
-		\subsection{Traženje algoritma za traženje linearnog splajna}
+		\subsection{Algoritam za traženje linearnog splajna}
+		Neka je zadana neprekidna funkcija $f:[a,b]\rightarrow \mathbb{R} $ i neka je segment $[a,b]$ podijeljen na $n$ jednakih dijelova, tj. neka su
+		\begin{equation*}
+			x_i=a+ih,\quad i=0,1,\ldots,n,\quad h=\frac{b-a}{n}
+		\end{equation*}
+		
+		Algoritam koji računa linearni splajn izmađu dvaju ekvidistantnih čvorova $x_i$ započinje pronalaženjem točaka.
+		
+		\begin{align*}
+			y_i&=f(x_i)\\
+			y_{i+1}&=f(x_{i+1})\\
+			&\downarrow\\
+			T_i&(x_i, y_i)\\
+			T_{i+1}&(x_{i+1}, y_{i+1})
+		\end{align*}
+		
+		Zatim moramo pronaći pravac koji je razapet između tih dviju točaka. To možemo napraviti po formuli koja je opće poznata:
+		\begin{equation*}
+		y=\biggr{(}\frac{y_{i+1}-y_i}{x_{i+1}-x_i}\biggr{)}(x-x_i)+y_i
+		\end{equation*}
 		\subsection{$f(x)=\sin x$}
 		\subsection{$g(x)=\frac{1}{x^2 +1}$}
 	\section{Opis nedostataka linearnih splajnova}
