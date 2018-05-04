@@ -5,7 +5,7 @@ plt.grid()
 ax = plt.subplot(111)
 const = 2 * np.pi / 40
 i = 0
-while (i <= 40):
+while i <= 40:
     # Brise canvas tako da se moze crtati od pocetka
     ax.clear()
 
