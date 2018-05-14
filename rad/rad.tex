@@ -14,6 +14,7 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{pgfplots}
 \renewcommand{\familydefault}{\sfdefault}
 
 \author{Matea Novak \and Filip Novački \and Ante Vulić}
@@ -44,6 +45,82 @@
 	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem.
 	\section{Opis linearnog splajna}
 	
+	Kao što smo već objasnili spajn ranije, on nam služi za dobivanje vrijednosti koji su između dviju izmjerenih vrijednosti.
+	
+	\begin{minipage}{0.4\textwidth}
+	\begin{table}[H]
+		\begin{tabular}{c c}
+			Godina&Broj stanovnika\\\hline
+			2001	&	48068	\\
+%			2002	&	47723	\\
+%			2003	&	47460	\\
+			2004	&	47185	\\
+%			2005	&	47050	\\
+%			2006	&	46972	\\
+			2007	&	46968	\\
+%			2008	&	46912	\\
+%			2009	&	46902	\\
+			2010	&	46957	\\
+%			2011	&	46938	\\
+%			2012	&	46781	\\
+			2013	&	46574	\\
+%			2014	&	46476	\\
+%			2015	&	46319	\\
+			2016	&	46294	\\
+			
+		\end{tabular}
+	\caption{Izvor: \url{www.dzs.hr}}
+	\label{dzsStan}
+	\end{table}
+	\end{minipage}
+	\begin{minipage}{0.6\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		title={Broj stanovnika u Varaždinu},
+		x tick label style={
+			/pgf/number format/1000 sep=},
+		xlabel={Godina},
+		ylabel={Broj stanovnika},
+		xmin=2001, xmax=2016,
+		ymin=46000, ymax=48500,
+		xtick={2001, 2004, 2007, 2010, 2013, 2016},
+		ytick={46000, 46500, 47000, 47500, 48000, 48500},
+		legend pos=north west,
+		ymajorgrids=true,
+		grid style=dashed,
+		]
+		
+		\addplot[
+		color=blue,
+		mark=square,
+		]
+		coordinates {
+			(2001,48063)
+%			(2002,47723)
+%			(2003,47460)
+			(2004,47185)
+%			(2005,47050)
+%			(2006,46972)
+			(2007,46968)
+%			(2008,46912)
+%			(2009,46902)
+			(2010,46957)
+%			(2011,46938)
+%			(2012,46781)
+			(2013,46574)
+%			(2014,46476)
+%			(2015,46319)
+			(2016,46294)
+		};
+		\legend{Broj stanovnika}
+		
+		\end{axis}
+		%
+		\end{tikzpicture}
+
+	
+	\end{minipage}
+	Pogledajmo tablicu \ref{dzsStan} i pripadni graf. U ovim podacima vidimo popise stanovništa za svaku treću godinu. Linearni splajn bi nam ovdje pomogao da prepostavimo koliko je moglo biti stanovnika između dvaju izmjerenih razdoblja.
 	\section{Primjeri}
 		\subsection{Algoritam za traženje linearnog splajna}
 		Neka je zadana neprekidna funkcija $f:[a,b]\rightarrow \mathbb{R} $ i neka je segment $[a,b]$ podijeljen na $n$ jednakih dijelova, tj. neka su
