@@ -15,9 +15,9 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{pgfplots}
-\renewcommand{\familydefault}{\sfdefault}
+%\renewcommand{\familydefault}{\sfdefault}
 
-\author{Matea Novak \and Filip Novački \and Ante Vulić}
+\author{Matea Novak \and Filip Novački}
 \title{Linearni splajn. Po dijelovima kubična interpolacija}
 \begin{document}
 	\maketitle
@@ -43,6 +43,56 @@
 	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratični splajn ima jedan nedostatak. Nedostatak je u tome što je zakrivljen uvijek u jednu stranu, odnosno u obliku parabole. Kubična interpolacija je po tom pitanju mnogo bolja jer može imati oblik parabole, ali ne mora. 
 	
 	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem.
+	\subsection{Newtonov oblik}
+	Newtonova forma nam je korisna jer lako dodajemo nove točke interpolacije i na taj način povećavamo stupanj interpolacijskog polinoma. 
+	
+	Neka je $p_{n-1}$ interpolira neku funkciju $f$ u točkama $x_k, k=0,\ldots,n-1$. Neka polinom $p_n$ interpolira funkciju $f$ u istim točkama i još u točki $x_n$. Tada polinom $p_n$ možemo napisati:
+	\begin{equation}
+		p_n(x)=p_{n-1}(x)+c(x)
+		\label{2.1}
+	\end{equation}
+	U takvom zapisu, $c(x)$ predstavlja korekciju koja je polinom stupnja $n$. Nadalje, točke $x_k$ moraju biti nultočke polinoma $c$. Stoga vrijedi:
+	\begin{equation}
+		c(x)=a_n(x-x_0)\ldots(x-x_{n-1})
+		\label{2.2}
+	\end{equation}
+	Iz jednadžbi \ref{2.1} i \ref{2.2} zaključujemo:
+	\begin{equation}
+		f(x_n)=p_n(x_n)=p_{n-1}(x_n)+a_n(x_n-x_0)\ldots(x_n-x_{n-1})
+	\end{equation}
+	U ovoj jednadžbi $a_n$ je vodeći koeficijent polinoma $c$. To možemo zapisati još i
+	\begin{equation}
+		a_n=f[x_0, x_1, \ldots, x_n]
+	\end{equation}
+	%citirati Pred_0910_4b.pdf
+	Na kraju, polinom za stupanj veći od prethodnog možemo definirati kao:
+	\begin{equation}
+		p_n(x)=p_{n-1}(x_n)+(x-x_0)\ldots(x-x_{n-1})f[x_0, x_1, \ldots, x_n]
+		\label{2.5}
+	\end{equation}
+	Rekurzivo, iz izraza \ref{2.5} dobivamo napokon Newtonov oblik interpolacijskog polinoma koji glasi:
+	\begin{align*}
+	P_i(x)=&f[x_0]\\
+	+&f[x_0,x_1](x-x_0)\\
+	+&f[x_0,x_1,x_2](x-x_0)(x-x_1)\\
+	+&f[x_0,x_1,x_2,x_3](x-x_0)(x-x_1)(x-x_2)\\
+	+&\ldots+f[x_0,x_1,\ldots,x_n](x-x_0)\ldots(x-x_{n-1})
+	\end{align*}
+	Interpolacijski polinom stupnja 0 je zapravo točka koja interpolira funkciju $f$ u točki $x_0$.
+	\begin{equation*}
+		P_0(x)=f_0
+	\end{equation*}
+	Nadalje, interpolacijski polinom stupnja 1 nastaje tako da prethodnom polinomu stupnja 0 dodamo korekciju $c_1$.
+	\begin{equation*}
+		p_1(x)=p_0(x)+c_1(x)
+	\end{equation*}
+	Za $f_0$ korekcija $c_1$ mora biti $c_1(x_0)=0$. 
+	
+	Interpolacijski polinom stupnja 2 nastaje tako da dodamo još jedan čvor interpolacije $x_2$. Sada polinom $p_2$ dobijemo tako da polinomu $p_1$ dodamo korekciju $c_2$.
+	\begin{equation*}
+		p2(x)=p_1(x)+c_2(x)
+	\end{equation*}
+	
 	\section{Opis linearnog splajna}
 	
 	Kao što smo već objasnili spajn ranije, on nam služi za dobivanje vrijednosti koji su između dviju izmjerenih vrijednosti.
@@ -121,6 +171,8 @@
 	
 	\end{minipage}
 	Pogledajmo tablicu \ref{dzsStan} i pripadni graf. U ovim podacima vidimo popise stanovništa za svaku treću godinu. Linearni splajn bi nam ovdje pomogao da prepostavimo koliko je moglo biti stanovnika između dvaju izmjerenih razdoblja.
+	
+	Prednosti linearnog splajna su što vrlo jednostavne za izračunati za bilo koju točku, kao što ćemo vidjeti u primjerima. Glavni nedostatak linearne interpolacije je to što može doći do značajnih odstupanja kod nelinearnih funkcija koji su česti u fizici, kemiji i sl.
 	\section{Primjeri}
 		\subsection{Algoritam za traženje linearnog splajna}
 		Neka je zadana neprekidna funkcija $f:[a,b]\rightarrow \mathbb{R} $ i neka je segment $[a,b]$ podijeljen na $n$ jednakih dijelova, tj. neka su
@@ -239,7 +291,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 	\section{Opis po dijelovima kubične interpolacije}
 	\section{Primjeri}
 		\subsection{Algoritam za traženje po dijelovima kubične interpolacije}
-
+		Postoje dva načina na koje možemo izračunati kubičnu interpolaciju. Prvi je pomoću standardnog oblika (Newtonovog oblika), a drugi pomoću Hermiteove polinomne interpolacije.
+		
+		Hermiteova polinomna interpolacija izgleda ovako:
 		\begin{align*}
 		P_i(x)=C_{0,i}+C_{1,i}(x-x_{i-1})+C_{2,i}(x-x_{i-1})^2+C_{3,i}(x-x_{i-1})^3 \\
 		x\in[x_{i-1}, x_i], i=1,...,n
@@ -249,7 +303,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 			&P_i(x_{i-1})=f_{i-1} &P_i'(x_{i-1})=S_{i-1}\\
 			&h_i=x_i-x_{i-1} &f[x_i, x_i]=f'(x_i)=s_i
 		\end{align*}
-
+		
+		
+		
 
 
 		\subsection{$f(x)=\sin x$}
@@ -261,10 +317,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 		
 		Nadalje,
 		\begin{align*}
-			C_{0,1}&=P_1(x_0)=f(x_0)=\sin (x_0)=\sin (0) = 0\\
-			C_{1,1}&=P'_k(x_0)=f'(x_0)=\sin(x_0)'=\cos(0) =1\\
-			C_{2, 1}&=\frac{P''_k(x_0)}{2}=\frac{(\sin (x_0))''}{2}=\frac{-\sin(0)}{2}=0\\
-			C_{3, 1}&=\frac{P'''_k(x_0)}{6}=\frac{(\sin (x_0))'''}{6}=\frac{-\cos(0)}{6}=-\frac{1}{6}\\
+			C_{0,1}&=\frac{P_1(x_0)}{0!}=f(x_0)=\sin (x_0)=\sin (0) = 0\\
+			C_{1,1}&=\frac{P'_k(x_0)}{1!}=f'(x_0)=\sin(x_0)'=\cos(0) =1\\
+			C_{2, 1}&=\frac{P''_k(x_0)}{2!}=\frac{(\sin (x_0))''}{2}=\frac{-\sin(0)}{2}=0\\
+			C_{3, 1}&=\frac{P'''_k(x_0)}{3!}=\frac{(\sin (x_0))'''}{6}=\frac{-\cos(0)}{6}=-\frac{1}{6}\\
 		\end{align*}
 		Izračunate vrijednosti uvrštavamo u gornju jednadžbu te dobivamo polinom:
 		\begin{align*}
