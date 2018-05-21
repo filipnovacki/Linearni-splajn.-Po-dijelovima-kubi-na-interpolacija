@@ -41,9 +41,11 @@
 	
 	Kao što vidimo na slici \ref{usporedba}, plava linija dosta je dosta blizu narančastoj, no za razne primjene bi ta greška mogla biti prevelika.
 	
-	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratični splajn ima jedan nedostatak. Nedostatak je u tome što je zakrivljen uvijek u jednu stranu, odnosno u obliku parabole. Kubična interpolacija je po tom pitanju mnogo bolja jer može imati oblik parabole, ali ne mora\cite{SteigerPrez}. 
+	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratni polinomi se ne koriste jer se kontrola derivacije može napraviti samo na jednom rubu, što znači da bismo samo s jedne strane mogli imati glatki prijelaz. Parabolička interpolacija nema prave fizikalne podloge i to je dodatni razlog da se ne koristi. Ponekad se koristi u računalnoj grafici.\cite{hari} 
 	
-	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem\cite{ChEn2450}.
+	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem\cite{ChEn2450}. 
+	
+	Najčešći oblik interpolacije je po dijelovima kubična interpolacija te ima važnu fizikalnu podlogu\cite{hari}.
 	\subsection{Newtonov oblik}
 	Newtonova forma\cite{hari} nam je korisna jer lako dodajemo nove točke interpolacije i na taj način povećavamo stupanj interpolacijskog polinoma. 
 	
@@ -290,6 +292,17 @@
 			
 	\section{Opis nedostataka linearnih splajnova}
 	\section{Opis po dijelovima kubične interpolacije}
+	Ideja kubične interpolacije je prikaz neke funkcije pomoću više polinoma trećeg stupnja, svakog na nekom intervalu između dvije krajnje točke.
+	
+	Kod po dijelovima kubične interpolacije restrikcija aproksimacijske funkcije $f$ na svaki interval $[x_{k-1},x_k]$ je kubični polinom kojeg zapisujemo relativno s obzirom na početnu točku intervala u obliku:
+	\begin{align*}
+		P_k(x)=C_{0,k}+C_{1,k}(x-x_{k-1})+C_{2,k}(x-x_{k-1})^2+C_{3,k}
+		(x-x_{k-1})^3\\
+		P_k\in \mathcal{P}_3, x\in [x_{k-1}, x_k], k=1,\ldots,n
+	\end{align*}
+	
+	Kubična se interpolacija koristi zato što je niskog stupnja te je stoga jednostavna za izračun. Unatoč tome, rezultat koji se dobije tim postupkom je zadovoljavajuće točnosti, gladak je i neprekidan u čvorovima.
+	
 	\section{Primjeri}
 		\subsection{Algoritam za traženje po dijelovima kubične interpolacije}
 		Postoje dva načina na koje možemo izračunati kubičnu interpolaciju. Prvi je pomoću standardnog oblika (Newtonovog oblika), a drugi pomoću Hermiteove polinomne interpolacije.
@@ -299,14 +312,25 @@
 		P_i(x)=C_{0,i}+C_{1,i}(x-x_{i-1})+C_{2,i}(x-x_{i-1})^2+C_{3,i}(x-x_{i-1})^3 \\
 		x\in[x_{i-1}, x_i], i=1,...,n
 		\end{align*}
+		Neprekidnost funkcije se osiguravaju na način da interpolacija mora davati iste vrijednosti kao i funkcija u rubovima svog podintervala, odnosno:
 		\begin{align*}
-			&P_i(x_i)=f_i &P_i'(x_i)=S_i\\
-			&P_i(x_{i-1})=f_{i-1} &P_i'(x_{i-1})=S_{i-1}\\
-			&h_i=x_i-x_{i-1} &f[x_i, x_i]=f'(x_i)=s_i
+			&P_i(x_i)=f_i\\
+			&P_i(x_{i-1})=f_{i-1}\\
+			%&h_i=x_i-x_{i-1} &f[x_i, x_i]=f'(x_i)=s_i
+		\end{align*}
+		Kako bi funkcija bila što glađa, potrebno je učiniti derivacije interpolacija jednakim u čvorovima, odnosno:
+		\begin{align*}
+		P_i'(x_i)=S_i\\
+		P_i'(x_{i-1})=S_{i-1}\\
 		\end{align*}
 		
 		
-		
+		Za računanje kubične interpolacije možemo koristiti i Newtonov oblik interpolacijskog polinoma. Taj smo oblik već opisali, stoga nećemo diskutirati detalje, nego ćemo opisati kako se može elegantno doći do rješenja. Jednostavnim algoritmom možemo opisati računanje podijeljenih razlika:
+		\begin{lstlisting}
+for i:=1 to n do
+  for j := n to i do
+    f[j] := (f[j]-f[j-1])/(x[j]-x[j-1])
+		\end{lstlisting}
 
 
 		\subsection{$f(x)=\sin x$}
@@ -325,9 +349,20 @@
 		\end{align*}
 		Izračunate vrijednosti uvrštavamo u gornju jednadžbu te dobivamo polinom:
 		\begin{align*}
-			P_i=0+1(x-0)+0(x-0)^2-\frac{1}{6}(x-0)^3 = 1-\frac{1}{6}x^3
+			P_i=0+1(x-0)+0(x-0)^2-\frac{1}{6}(x-0)^3 = 1x-\frac{1}{6}x^3
 		\end{align*}
-		
+		Uvjerimo se u točnost rezultata slikom:
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}% function
+			\begin{axis}[axis x line=center, axis y line=center, ymin=-1]
+			\addplot[domain=0:2*pi,smooth, color=red] (\x,{sin(\x r)});
+			\addplot[domain=0:2*pi,smooth, color=blue]
+			(\x,{1*\x-(x^3/6)});
+			\end{axis}
+			\end{tikzpicture}
+			\caption{Prikaz funkcije $f(x)=\sin x$ (crveno) i interpolacije te funkcije polinomom trećeg stupnja $P(x)=1x-\frac{1}{6}x^3$ (plavo)}
+		\end{figure}
 		\subsection{$g(x)=\frac{1}{x^2 +1}$}
 \chapter{Zaključak}
 \chapter{Dodatak}
