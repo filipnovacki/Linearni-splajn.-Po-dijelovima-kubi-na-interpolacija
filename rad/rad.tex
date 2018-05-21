@@ -15,6 +15,7 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{pgfplots}
+\usepackage{cite}
 %\renewcommand{\familydefault}{\sfdefault}
 
 \author{Matea Novak \and Filip Novački}
@@ -36,15 +37,15 @@
 		\label{usporedba}
 	\end{wrapfigure}
 	
-	Jedna je opcija napraviti interpolaciju linijama prvog reda, dakle, pravcima, odnosno dužinama koje jednostavno povučemo između dviju točaka. Takva aproksimacija je vrlo jednostavna za izračunati, međutim, takvo mjerenje ne daje baš zadovoljavajuće rezultate. Drugi je problem što mjesta gdje se ti pravci spajaju su \textit{oštri}, odnosno ne postoji glatki prijelaz.
+	Jedna je opcija napraviti interpolaciju linijama prvog reda, dakle, pravcima, odnosno dužinama koje jednostavno povučemo između dviju točaka. Takva aproksimacija je vrlo jednostavna za izračunati, međutim, takvo mjerenje ne daje baš zadovoljavajuće rezultate\cite{ChEn2450}. Drugi je problem što mjesta gdje se ti pravci spajaju su \textit{oštri}, odnosno ne postoji glatki prijelaz.
 	
 	Kao što vidimo na slici \ref{usporedba}, plava linija dosta je dosta blizu narančastoj, no za razne primjene bi ta greška mogla biti prevelika.
 	
-	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratični splajn ima jedan nedostatak. Nedostatak je u tome što je zakrivljen uvijek u jednu stranu, odnosno u obliku parabole. Kubična interpolacija je po tom pitanju mnogo bolja jer može imati oblik parabole, ali ne mora. 
+	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratični splajn ima jedan nedostatak. Nedostatak je u tome što je zakrivljen uvijek u jednu stranu, odnosno u obliku parabole. Kubična interpolacija je po tom pitanju mnogo bolja jer može imati oblik parabole, ali ne mora\cite{SteigerPrez}. 
 	
-	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem.
+	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem\cite{ChEn2450}.
 	\subsection{Newtonov oblik}
-	Newtonova forma nam je korisna jer lako dodajemo nove točke interpolacije i na taj način povećavamo stupanj interpolacijskog polinoma. 
+	Newtonova forma\cite{hari} nam je korisna jer lako dodajemo nove točke interpolacije i na taj način povećavamo stupanj interpolacijskog polinoma. 
 	
 	Neka je $p_{n-1}$ interpolira neku funkciju $f$ u točkama $x_k, k=0,\ldots,n-1$. Neka polinom $p_n$ interpolira funkciju $f$ u istim točkama i još u točki $x_n$. Tada polinom $p_n$ možemo napisati:
 	\begin{equation}
@@ -88,7 +89,7 @@
 	\end{equation*}
 	Za $f_0$ korekcija $c_1$ mora biti $c_1(x_0)=0$. 
 	
-	Interpolacijski polinom stupnja 2 nastaje tako da dodamo još jedan čvor interpolacije $x_2$. Sada polinom $p_2$ dobijemo tako da polinomu $p_1$ dodamo korekciju $c_2$.
+	Interpolacijski polinom stupnja 2 nastaje tako da dodamo još jedan čvor interpolacije $x_2$. Sada polinom $p_2$ dobijemo tako da polinomu $p_1$ dodamo korekciju $c_2$\cite{NumMatPrez}.
 	\begin{equation*}
 		p2(x)=p_1(x)+c_2(x)
 	\end{equation*}
@@ -190,7 +191,7 @@
 			T_{i+1}&(x_{i+1}, y_{i+1})
 		\end{align*}
 		
-		Zatim moramo pronaći pravac koji je razapet između tih dviju točaka. To možemo napraviti po formuli koja je opće poznata:
+		Zatim moramo pronaći pravac koji je razapet između tih dviju točaka. To možemo napraviti po formuli koja je opće poznata\cite{pmfPrezp5}:
 		\begin{equation}
 		y=\biggr{(}\frac{y_{i+1}-y_i}{x_{i+1}-x_i}\biggr{)}(x-x_i)+y_i
 		\label{pravac}
@@ -198,70 +199,70 @@
 		
 		
 		\subsection{$f(x)=\sin x$}
-		Ovaj ćemo zadatak riješiti za $i=1, 2,\ldots, 40$. S obzirom da nema nekog smisla pisati za svaki interval pojedinačno, ovaj ćemo zadatak riješiti programskim putem, a ručno ćemo pokazati samo na jednom primjeru. Tablicu s rješenjima možemo vidjeti u tablici \ref{linInterpolTablica}.
-		\begin{align*}
-			f(x)=\sin (x),& \quad x\in [0, 2\pi]\\
-			n&=40\\
-			a&=0\\
-			b&=2\pi\\
-		\end{align*}
-		Pronađimo prva dva čvora. Pri računanju koristimo \texttt{Python}:
-
-		\begin{lstlisting}
-Python 3.6.3 (default, Oct  3 2017, 21:45:48) 
-[GCC 7.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import numpy as np
->>> b = 2 * np.pi
->>> a = 0
->>> n = 40
->>> h = (b - a) / n
->>> 
->>> x0 = a + 0 * h
->>> y0 = np.sin(x0)
->>> x1 = a + 1 * h
->>> y1 = np.sin(x1)
->>> x0
-0.0
->>> y0
-0.0
->>> x1
-0.15707963267948966
->>> y1
-0.15643446504023087
-		\end{lstlisting}
-
-		K\^{o}d u prijevodu na matematički jezik glasi ovako:
-		\begin{align*}
-			x_0=&0\quad\rightarrow \quad y_0=f(0)=0\\
-			x_1=&a+ih\\=&0+1\frac{2\pi-0}{40}\\
-				=&0.15707963267948966\\
-			y_1=&f\biggr{(}\frac{2\pi}{40}\biggr{)}\\=&0.15643446504023087
-		\end{align*}
-		Uvrštavanjem ovih podataka u jednadžbu \ref{pravac} dobivamo:
-		\begin{equation}
-			y=1.0041242039539873x
-			\label{linInt1}
-		\end{equation}
-		Kad razmislimo o rješenju, vidimo da ono ima smisla jer prolazi kroz ishodište, a nagib je skoro jednak 1, što također ima smisla jer koordinate točke skoro jednake. Osim toga, i grafički rješenje ima smisla, što možemo vidjeti na slici \ref{linInterSlika1}.
-		\begin{figure}[H]
-			\centering
-			\begin{minipage}{.5\textwidth}
+			Ovaj ćemo zadatak riješiti za $i=1, 2,\ldots, 40$. S obzirom da nema nekog smisla pisati za svaki interval pojedinačno, ovaj ćemo zadatak riješiti programskim putem, a ručno ćemo pokazati samo na jednom primjeru. Tablicu s rješenjima možemo vidjeti u tablici \ref{linInterpolTablica}.
+			\begin{align*}
+				f(x)=\sin (x),& \quad x\in [0, 2\pi]\\
+				n&=40\\
+				a&=0\\
+				b&=2\pi\\
+			\end{align*}
+			Pronađimo prva dva čvora. %Pri računanju koristimo \texttt{Python}:
+%	
+%			\begin{lstlisting}
+%Python 3.6.3 (default, Oct  3 2017, 21:45:48) 
+%[GCC 7.2.0] on linux
+%Type "help", "copyright", "credits" or "license" for more information.
+%>>> import numpy as np
+%>>> b = 2 * np.pi
+%>>> a = 0
+%>>> n = 40
+%>>> h = (b - a) / n
+%>>> 
+%>>> x0 = a + 0 * h
+%>>> y0 = np.sin(x0)
+%>>> x1 = a + 1 * h
+%>>> y1 = np.sin(x1)
+%>>> x0
+%0.0
+%>>> y0
+%0.0
+%>>> x1
+%0.15707963267948966
+%>>> y1
+%0.15643446504023087
+%			\end{lstlisting}
+%	
+%			K\^{o}d u prijevodu na matematički jezik glasi ovako:
+			\begin{align*}
+				x_0=&0\quad\rightarrow \quad y_0=f(0)=0\\
+				x_1=&a+ih\\=&0+1\frac{2\pi-0}{40}\\
+					=&0.15707963267948966\\
+				y_1=&f\biggr{(}\frac{2\pi}{40}\biggr{)}\\=&0.15643446504023087
+			\end{align*}
+			Uvrštavanjem ovih podataka u jednadžbu \ref{pravac} dobivamo:
+			\begin{equation}
+				y=1.0041242039539873x
+				\label{linInt1}
+			\end{equation}
+			Kad razmislimo o rješenju, vidimo da ono ima smisla jer prolazi kroz ishodište, a nagib je skoro jednak 1, što također ima smisla jer koordinate točke skoro jednake. Osim toga, i grafički rješenje ima smisla, što možemo vidjeti na slici \ref{linInterSlika1}.
+			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\textwidth]{slike/usporedba40.png}
-			\end{minipage}%
-			\begin{minipage}{.5\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{slike/usporedba412.png}
-			\end{minipage}
-			\caption{Usporedba funkcije $f(x)=\sin (x)$ i linearne interpolacije po jednadžbi pravca iz jednadžbe \ref{linInt1} te na isječku za $i=13$. Plavom bojom je prikazana interpolacija, a narančastom funkcija. Izvor: autorska izrada}
-			\label{linInterSlika1}
-		\end{figure}
-		Cijela funkcija s pripadnim linearnim interpolacijama izgleda ovako:
-		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{slike/usporedbaLinearneInterpolacijeSin.png}
-			\caption{Prikaz funkcije $f(x)=\sin (x)$ i linearnih interpolacija. Izvor: autorska izrada}
-		\end{figure}
+				\begin{minipage}{.5\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{slike/usporedba40.png}
+				\end{minipage}%
+				\begin{minipage}{.5\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{slike/usporedba412.png}
+				\end{minipage}
+				\caption{Usporedba funkcije $f(x)=\sin (x)$ i linearne interpolacije po jednadžbi pravca iz jednadžbe \ref{linInt1} te na isječku za $i=13$. Plavom bojom je prikazana interpolacija, a narančastom funkcija. Izvor: autorska izrada}
+				\label{linInterSlika1}
+			\end{figure}
+			Cijela funkcija s pripadnim linearnim interpolacijama izgleda ovako:
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/usporedbaLinearneInterpolacijeSin.png}
+				\caption{Prikaz funkcije $f(x)=\sin (x)$ i linearnih interpolacija. Izvor: autorska izrada}
+			\end{figure}
 		\subsection{$g(x)=\frac{1}{x^2 +1}$}
 			Ovaj ćemo zadatak riješiti koristeći isti algoritam kao u prethodnom zadatku. Za početak bismo trebali provjeriti domenu funkcije s obzirom da varijabla $x$ u nazivniku uvijek malo miriše na nevolje i dijeljenje s nulom. Stoga zaključujemo da imamo uvjet $x^2+1\neq0$, zaključujemo da $x^2\neq-1$ te smo sretni jer nam je domena $\mathbb{R}$.
 			
@@ -436,4 +437,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 		Prikaz svih čvorova funkcije $g(x)=\frac{1}{x^2 +1}$, jednadžbe pravca koja interpolira između dviju susjednih točaka te razlika između vrijednosti funkcije u točki $x=1.2$ i interpolacije u istoj točki. U izračunu je korišten maksimalni broj decimala koliko podržava tip podataka \texttt{float} iz \texttt{Python} biblioteke \texttt{Numpy}. Radi preglednosti je prikazan manji broj decimala. Izvor: autorska izrada}
 	\label{linInterpolTablicaDva}
 \end{table}
+\bibliography{lib}{}
+\bibliographystyle{plain}
 \end{document}
