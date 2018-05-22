@@ -29,7 +29,7 @@
 	Ovo je timski projektni zadatak napravljen je u sklopu kolegija Odabrana poglavlja matematike na Fakultetu organizacije i informatike u Varaždinu Sveučilišta u Zagrebu. Cijeli projekt razvijan je na \texttt{git} repozitoriju koji je dostupan na: \url{https://github.com/filipnovacki/linearni-splajn}. 
 \chapter{Zadaci}
 	\section{Opis glavne ideje po dijelovima polinomne interpolacije}
-	Kod raznih mjerenja, istraživanja i sl. se događa da rezultati nekog testiranja budu podaci koji su diskretni, odnosno izmjereni su za neke vrijednosti. Kako bi nam te vrijednosti bile korisne i primjenjive, moramo na neki način odrediti koje su vrijednosti između dviju diskretnih vrijednosti. Tu u priču dolazi interpolacija.
+	Kod raznih mjerenja, istraživanja i sl. se događa da rezultati nekog testiranja budu podaci koji su diskretni, odnosno izmjereni su za neke vrijednosti. Kako bi nam te vrijednosti bile korisne i primjenjive, moramo na neki način odrediti koje su vrijednosti između dviju diskretnih vrijednosti. Tu u priču dolazi interpolacija. \footnote{Zadatak 1 - glavn ideje po dijelovima polinomne interpolacije}
 	
 	\begin{wrapfigure}{r}{0.55\textwidth}
 		\includegraphics[width=0.55\textwidth]{slike/usporedba.png}
@@ -37,17 +37,17 @@
 		\label{usporedba}
 	\end{wrapfigure}
 	
-	Jedna je opcija napraviti interpolaciju linijama prvog reda, dakle, pravcima, odnosno dužinama koje jednostavno povučemo između dviju točaka. Takva aproksimacija je vrlo jednostavna za izračunati, međutim, takvo mjerenje ne daje baš zadovoljavajuće rezultate\cite{ChEn2450}. Drugi je problem što mjesta gdje se ti pravci spajaju su \textit{oštri}, odnosno ne postoji glatki prijelaz.
+	Jedna je opcija napraviti interpolaciju linijama prvog reda, dakle, pravcima, odnosno dužinama koje jednostavno povučemo između dviju točaka. Takva aproksimacija je vrlo jednostavna za izračunati, međutim, takvo mjerenje ne daje baš zadovoljavajuće rezultate\cite{ChEn2450}. Drugi je problem što mjesta gdje se ti pravci spajaju su \textit{oštri}, odnosno ne postoji glatki prijelaz.\footnote{Zadatak 6 - glavni nedostaci linearnih splajnova}
 	
 	Kao što vidimo na slici \ref{usporedba}, plava linija dosta je dosta blizu narančastoj, no za razne primjene bi ta greška mogla biti prevelika.
 	
-	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratni polinomi se ne koriste jer se kontrola derivacije može napraviti samo na jednom rubu, što znači da bismo samo s jedne strane mogli imati glatki prijelaz. Parabolička interpolacija nema prave fizikalne podloge i to je dodatni razlog da se ne koristi. Ponekad se koristi u računalnoj grafici.\cite{hari} 
+	Bolja opcija je povezati točke krivuljama višeg reda. Kako bismo dobili glatki prijelaz, moramo paziti da derivacija u točkama uvijek bude jednaka. Kvadratni polinomi se ne koriste jer se kontrola derivacije može napraviti samo na jednom rubu, što znači da bismo samo s jedne strane mogli imati glatki prijelaz. Parabolička interpolacija nema prave fizikalne podloge i to je dodatni razlog da se ne koristi\footnote{Zadatak 6 - zašto se u praksi ne koristi po dijelovima kvadratna interpolacija}. Ponekad se koristi u računalnoj grafici.\cite{hari} 
 	
 	Mogu se koristiti i polinomi još višeg reda, međutim oni se nešto teže računaju te funkcije polinoma višeg reda imaju tendenciju na nekim mjestima jako \textit{divljati}, što ponekad može predstavljati problem\cite{ChEn2450}. 
 	
 	Najčešći oblik interpolacije je po dijelovima kubična interpolacija te ima važnu fizikalnu podlogu\cite{hari}.
-	\subsection{Newtonov oblik}
-	Newtonova forma\cite{hari} nam je korisna jer lako dodajemo nove točke interpolacije i na taj način povećavamo stupanj interpolacijskog polinoma. 
+	\subsection{Newtonov oblik \cite{hari}}
+	Newtonova forma\footnote{Zadatak 1 - Newtonov oblik interpolacijskog polinoma} nam je korisna jer lako dodajemo nove točke interpolacije i na taj način povećavamo stupanj interpolacijskog polinoma. 
 	
 	Neka je $p_{n-1}$ interpolira neku funkciju $f$ u točkama $x_k, k=0,\ldots,n-1$. Neka polinom $p_n$ interpolira funkciju $f$ u istim točkama i još u točki $x_n$. Tada polinom $p_n$ možemo napisati:
 	\begin{equation}
@@ -96,7 +96,7 @@
 		p2(x)=p_1(x)+c_2(x)
 	\end{equation*}
 	
-	\section{Opis linearnog splajna}
+	\section{Zadatak 2 - Opis linearnog splajna}
 	
 	Kao što smo već objasnili spajn ranije, on nam služi za dobivanje vrijednosti koji su između dviju izmjerenih vrijednosti.
 	
@@ -177,7 +177,7 @@
 	
 	Prednosti linearnog splajna su što vrlo jednostavne za izračunati za bilo koju točku, kao što ćemo vidjeti u primjerima. Glavni nedostatak linearne interpolacije je to što može doći do značajnih odstupanja kod nelinearnih funkcija koji su česti u fizici, kemiji i sl.
 	\section{Primjeri}
-		\subsection{Algoritam za traženje linearnog splajna}
+		\subsection{Zadatak 3 - Algoritam za traženje linearnog splajna}
 		Neka je zadana neprekidna funkcija $f:[a,b]\rightarrow \mathbb{R} $ i neka je segment $[a,b]$ podijeljen na $n$ jednakih dijelova, tj. neka su
 		\begin{equation*}
 			x_i=a+ih,\quad i=0,1,\ldots,n,\quad h=\frac{b-a}{n}
@@ -200,7 +200,7 @@
 		\end{equation}
 		
 		
-		\subsection{$f(x)=\sin x$}
+		\subsection{Zadatak 4 - $f(x)=\sin x$}
 			Ovaj ćemo zadatak riješiti za $i=1, 2,\ldots, 40$. S obzirom da nema nekog smisla pisati za svaki interval pojedinačno, ovaj ćemo zadatak riješiti programskim putem, a ručno ćemo pokazati samo na jednom primjeru. Tablicu s rješenjima možemo vidjeti u tablici \ref{linInterpolTablica}.
 			\begin{align*}
 				f(x)=\sin (x),& \quad x\in [0, 2\pi]\\
@@ -260,12 +260,14 @@
 				\caption{Usporedba funkcije $f(x)=\sin (x)$ i linearne interpolacije po jednadžbi pravca iz jednadžbe \ref{linInt1} te na isječku za $i=13$. Plavom bojom je prikazana interpolacija, a narančastom funkcija. Izvor: autorska izrada}
 				\label{linInterSlika1}
 			\end{figure}
-			Cijela funkcija s pripadnim linearnim interpolacijama izgleda ovako:
+			Cijela funkcija s pripadnim linearnim interpolacijama izgleda kako je prikazano na slici \ref{sinSInterpol}. Kao što možemo primjetiti, na ovako sitnoj slici se razlika između funkcije i splajnova ne može posve uočiti. Nepreciznost se može uočiti na slici \ref{linInterSlika1}
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/usporedbaLinearneInterpolacijeSin.png}
+				\centering
+				\includegraphics[width=0.9\textwidth]{slike/usporedbaLinearneInterpolacijeSin.png}
 				\caption{Prikaz funkcije $f(x)=\sin (x)$ i linearnih interpolacija. Izvor: autorska izrada}
+				\label{sinSInterpol}
 			\end{figure}
-		\subsection{$g(x)=\frac{1}{x^2 +1}$}
+		\subsection{Zadatak 5 - $g(x)=\frac{1}{x^2 +1}$}
 			Ovaj ćemo zadatak riješiti koristeći isti algoritam kao u prethodnom zadatku. Za početak bismo trebali provjeriti domenu funkcije s obzirom da varijabla $x$ u nazivniku uvijek malo miriše na nevolje i dijeljenje s nulom. Stoga zaključujemo da imamo uvjet $x^2+1\neq0$, zaključujemo da $x^2\neq-1$ te smo sretni jer nam je domena $\mathbb{R}$.
 			
 			Sad nećemo pokazivati ručne korake, nego ćemo jednostavno programskim putem izračunati ono što nas zanima za navedenu funkciju. Početne postavke su pokazane u nastavku, a rezultati su pokazani u tablici \ref{linInterpolTablicaDva}. Grafički prikaz možemo vidjeti na slici \ref{linInterSlika2}.
@@ -288,10 +290,7 @@
 				\label{linInterSlika2}
 			\end{figure}
 			
-			
-			
-	\section{Opis nedostataka linearnih splajnova}
-	\section{Opis po dijelovima kubične interpolacije}
+	\section{Zadatak 7 - Opis po dijelovima kubične interpolacije}
 	Ideja kubične interpolacije je prikaz neke funkcije pomoću više polinoma trećeg stupnja, svakog na nekom intervalu između dvije krajnje točke.
 	
 	Kod po dijelovima kubične interpolacije restrikcija aproksimacijske funkcije $f$ na svaki interval $[x_{k-1},x_k]$ je kubični polinom kojeg zapisujemo relativno s obzirom na početnu točku intervala u obliku:
@@ -304,7 +303,7 @@
 	Kubična se interpolacija koristi zato što je niskog stupnja te je stoga jednostavna za izračun. Unatoč tome, rezultat koji se dobije tim postupkom je zadovoljavajuće točnosti, gladak je i neprekidan u čvorovima.
 	
 	\section{Primjeri}
-		\subsection{Algoritam za traženje po dijelovima kubične interpolacije}
+		\subsection{Zadatak 8 - Algoritam za traženje po dijelovima kubične interpolacije}
 		Postoje dva načina na koje možemo izračunati kubičnu interpolaciju. Prvi je pomoću standardnog oblika (Newtonovog oblika), a drugi pomoću Hermiteove polinomne interpolacije.
 		
 		Hermiteova polinomna interpolacija izgleda ovako:
