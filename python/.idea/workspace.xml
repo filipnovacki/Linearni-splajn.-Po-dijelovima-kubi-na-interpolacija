@@ -16,16 +16,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tablice.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tablice.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/tablice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="192" column="42" selection-start-line="192" selection-start-column="42" selection-end-line="192" selection-end-column="42" />
+            <state relative-caret-position="504">
+              <caret line="230" column="36" selection-start-line="230" selection-start-column="36" selection-end-line="230" selection-end-column="36" />
               <folding>
                 <element signature="e#46#1288#0" />
                 <element signature="e#1316#2424#0" />
                 <element signature="e#2457#3557#0" />
                 <element signature="e#3590#5031#0" />
+                <element signature="e#5059#5734#0" />
+                <element signature="e#5761#6440#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kubInterpol.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/kubInterpol.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="69" column="97" lean-forward="true" selection-start-line="68" selection-start-column="33" selection-end-line="69" selection-end-column="97" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#74#1178#0" />
               </folding>
             </state>
           </provider>
@@ -34,22 +49,10 @@
       <file leaf-file-name="linInterpol.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/linInterpol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
+            <state relative-caret-position="1407">
               <caret line="67" selection-start-line="67" selection-end-line="67" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kubInterpol.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/kubInterpol.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +80,8 @@
         <option value="$PROJECT_DIR$/source/usporedbeLinInterpol.py" />
         <option value="$PROJECT_DIR$/source/linInterpol.py" />
         <option value="$PROJECT_DIR$/source/usporedbaLinInterpol.py" />
-        <option value="$PROJECT_DIR$/source/tablice.py" />
         <option value="$PROJECT_DIR$/source/kubInterpol.py" />
+        <option value="$PROJECT_DIR$/source/tablice.py" />
       </list>
     </option>
   </component>
@@ -94,7 +97,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1680" />
     <option name="y" value="27" />
-    <option name="width" value="1910" />
+    <option name="width" value="1900" />
     <option name="height" value="789" />
   </component>
   <component name="ProjectView">
@@ -160,7 +163,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.kubInterpol">
+  <component name="RunManager" selected="Python.tablice">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,8 +247,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.kubInterpol" />
         <item itemvalue="Python.tablice" />
+        <item itemvalue="Python.kubInterpol" />
         <item itemvalue="Python.linInterpol" />
       </list>
     </recent_temporary>
@@ -274,19 +277,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="25" width="1920" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925472" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" x="0" y="0" width="430" height="855" id="Documentation" order="5" sideWeight="0.26960784" side_tool="true" visible="true" weight="0.32177162" />
+      <window_info anchor="right" x="0" y="0" width="430" height="855" id="Documentation" order="5" sideWeight="0.269188" side_tool="true" weight="0.19743863" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.27586207" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3192436" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3192436" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32925472" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23212379" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09711846" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" anchor="right" id="SciView" order="4" sideWeight="0.73039216" visible="true" weight="0.32177162" />
+      <window_info anchor="right" id="SciView" order="4" sideWeight="0.730812" weight="0.19743863" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39822024" />
@@ -334,6 +338,7 @@
           <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#74#1178#0" />
           </folding>
         </state>
       </provider>
@@ -349,6 +354,8 @@
             <element signature="e#1316#2424#0" />
             <element signature="e#2457#3557#0" />
             <element signature="e#3590#5031#0" />
+            <element signature="e#5059#5734#0" />
+            <element signature="e#5761#6440#0" />
           </folding>
         </state>
       </provider>
@@ -375,6 +382,8 @@
             <element signature="e#1316#2424#0" />
             <element signature="e#2457#3557#0" />
             <element signature="e#3590#5031#0" />
+            <element signature="e#5059#5734#0" />
+            <element signature="e#5761#6440#0" />
           </folding>
         </state>
       </provider>
@@ -398,6 +407,8 @@
             <element signature="e#1316#2424#0" />
             <element signature="e#2457#3557#0" />
             <element signature="e#3590#5031#0" />
+            <element signature="e#5059#5734#0" />
+            <element signature="e#5761#6440#0" />
           </folding>
         </state>
       </provider>
@@ -427,6 +438,8 @@
             <element signature="e#1316#2424#0" />
             <element signature="e#2457#3557#0" />
             <element signature="e#3590#5031#0" />
+            <element signature="e#5059#5734#0" />
+            <element signature="e#5761#6440#0" />
           </folding>
         </state>
       </provider>
@@ -450,6 +463,8 @@
             <element signature="e#1316#2424#0" />
             <element signature="e#2457#3557#0" />
             <element signature="e#3590#5031#0" />
+            <element signature="e#5059#5734#0" />
+            <element signature="e#5761#6440#0" />
           </folding>
         </state>
       </provider>
@@ -555,22 +570,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/Vjezba/uvod.py" />
     <entry file="file://$PROJECT_DIR$/source/usporedbaLinInterpol.py" />
-    <entry file="file://$PROJECT_DIR$/source/tablice.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="192" column="42" selection-start-line="192" selection-start-column="42" selection-end-line="192" selection-end-column="42" />
-          <folding>
-            <element signature="e#46#1288#0" />
-            <element signature="e#1316#2424#0" />
-            <element signature="e#2457#3557#0" />
-            <element signature="e#3590#5031#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/linInterpol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
+        <state relative-caret-position="1407">
           <caret line="67" selection-start-line="67" selection-end-line="67" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -580,10 +582,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/kubInterpol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+        <state relative-caret-position="504">
+          <caret line="69" column="97" lean-forward="true" selection-start-line="68" selection-start-column="33" selection-end-line="69" selection-end-column="97" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#74#1178#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/tablice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="230" column="36" selection-start-line="230" selection-start-column="36" selection-end-line="230" selection-end-column="36" />
+          <folding>
+            <element signature="e#46#1288#0" />
+            <element signature="e#1316#2424#0" />
+            <element signature="e#2457#3557#0" />
+            <element signature="e#3590#5031#0" />
+            <element signature="e#5059#5734#0" />
+            <element signature="e#5761#6440#0" />
           </folding>
         </state>
       </provider>
