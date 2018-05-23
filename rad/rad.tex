@@ -335,7 +335,7 @@ for i:=1 to n do
 		\subsection{$f(x)=\sin x$}
 		Sad ćemo na primjeru pokazati kako izračunati kubičnu interpolaciju. Primjer je zadan ovako:
 		\begin{align*}
-			f(x)=\sin x, \quad x\in [0, 2\pi], \quad n=1,...,40.
+			f(x)=\sin x, \quad x\in [0, 2\pi], \quad n=1,\ldots,40.
 		\end{align*}
 		Za početak, tražimo rješenje za $n=1$. Tada nam je $h=2\pi$. Očekivano, $x_0 = 0$, a $x_1 = 2\pi$.  
 		
@@ -363,6 +363,41 @@ for i:=1 to n do
 			\caption{Prikaz funkcije $f(x)=\sin x$ (crveno) i interpolacije te funkcije polinomom trećeg stupnja $P(x)=1x-\frac{1}{6}x^3$ (plavo)}
 		\end{figure}
 		\subsection{$g(x)=\frac{1}{x^2 +1}$}
+		Idući primjer je zadan:
+		\begin{equation*}
+			g(x)=\frac{1}{x^2+1},\quad x\in [-5,5],\quad n=1,\ldots,40 
+		\end{equation*}
+		Ono što se na početku predstavlja kao problem su derivacije koje postaju malo složene, no sretni smo što posjedujemo računala koji znaju računati. Zato što \textit{pješice} računamo, pokazni primjer ćemo evaluirati u točki $x=0$.
+		\begin{align*}
+		C_{0,1}&=\frac{P_1(x_0)}{0!}=\dfrac{\dfrac{1}{x_o^2+1}}{0!}= 1\\
+		C_{1,1}&=\frac{P'_1(x_0)}{1!}=\frac{-\dfrac{2x_0}{(x_0^2+1)^2}}{1!}=0\\
+		C_{2,1}&=\frac{P''_1(x_0)}{2}=\frac{\dfrac{2(3x^2-1)}{(x^2+1)^3}
+		}{2!}=-2\\
+		C_{3, 1}&=\frac{P'''_1(x_0)}{3!}=\frac{-\dfrac{24x\left(x^2-1\right)}{\left(x^2+1\right)^4}}{6}=0\\
+		\end{align*}
+		Izračunate vrijednosti uvrštavamo u gornju jednadžbu te dobivamo polinom:
+		\begin{equation*}
+			P_i=0-2(x-0)+0(x-0)^2+0(x-0)^3 = 1-2x^2
+		\end{equation*}
+		Uvjerimo se u točnost rezultata slikom:
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}% function
+			\begin{axis}[
+			axis x line=center, 
+			axis y line=center, 
+			ymin=-0.1,
+			width=\textwidth,
+			height=0.3\textwidth
+			%scaled ticks=false,
+			]
+			\addplot[domain=-5:5,smooth, color=red] (\x,{1/(\x^2+1)});
+			\addplot[domain=-5:5,smooth, color=blue]
+			(\x,{-2*x^2+1});
+			\end{axis}
+			\end{tikzpicture}
+			\caption{Prikaz funkcije $g(x)=\frac{1}{x^2 +1}$ (crveno) i interpolacije te funkcije polinomom trećeg stupnja $P(x)=1-2x^2$ (plavo)}
+		\end{figure}
 \chapter{Zaključak}
 \chapter{Dodatak}
 	U ovom poglavlju se nalaze tablice koje bi svojom veličinom kvarile ugodnost čitanja te su stavljene na kraj. Na mjestima gdje su pozvane su napravljene poveznice do njih tako da su jednostavno pristupačne klikom na njih.
