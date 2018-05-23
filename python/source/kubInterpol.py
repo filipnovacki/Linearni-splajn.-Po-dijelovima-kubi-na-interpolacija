@@ -27,7 +27,7 @@ def crtaj_sin():
         # Crtanje interpolacije
 
         domena_interpolacije = np.arange(0, 2*np.pi, 0.01)
-        kodomena_interpolacije = c0 + c1*(domena_interpolacije-k*x)+ c2*(domena_interpolacije-k*x)**2 + c3*(domena_interpolacije-k*x)**3
+        kodomena_interpolacije = c0 + c1*(domena_interpolacije-k*x)+ (c2*(domena_interpolacije-k*x)**2)/2 + (c3*(domena_interpolacije-k*x)**3)/6
 
         # Zavrsna faza prikaza
         ax.plot(domena_funkcije, kodomena_funkcije)
