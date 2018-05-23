@@ -27,6 +27,8 @@
 	
 \chapter{Uvod}
 	Ovo je timski projektni zadatak napravljen je u sklopu kolegija Odabrana poglavlja matematike na Fakultetu organizacije i informatike u Varaždinu Sveučilišta u Zagrebu. Cijeli projekt razvijan je na \texttt{git} repozitoriju koji je dostupan na: \url{https://github.com/filipnovacki/linearni-splajn}. 
+	
+	Sve pripadajuće slike su pospremljene u mapama projekta, no znajući da se odmah neće svi moći snalaziti u mapa projekta, detaljniji se opisi nalaze na Wiki sustavu GitHuba na poveznici: \url{https://github.com/filipnovacki/linearni-splajn/wiki}.
 \chapter{Zadaci}
 	\section{Opis glavne ideje po dijelovima polinomne interpolacije}
 	Kod raznih mjerenja, istraživanja i sl. se događa da rezultati nekog testiranja budu podaci koji su diskretni, odnosno izmjereni su za neke vrijednosti. Kako bi nam te vrijednosti bile korisne i primjenjive, moramo na neki način odrediti koje su vrijednosti između dviju diskretnih vrijednosti. Tu u priču dolazi interpolacija. \footnote{Zadatak 1 - glavn ideje po dijelovima polinomne interpolacije}
@@ -332,7 +334,7 @@ for i:=1 to n do
 		\end{lstlisting}
 
 
-		\subsection{$f(x)=\sin x$}
+		\subsection{Zadatak 9 - $f(x)=\sin x$}
 		Sad ćemo na primjeru pokazati kako izračunati kubičnu interpolaciju. Primjer je zadan ovako:
 		\begin{align*}
 			f(x)=\sin x, \quad x\in [0, 2\pi], \quad n=1,\ldots,40.
@@ -357,12 +359,13 @@ for i:=1 to n do
 			\begin{axis}[axis x line=center, axis y line=center, ymin=-1]
 			\addplot[domain=0:2*pi,smooth, color=red] (\x,{sin(\x r)});
 			\addplot[domain=0:2*pi,smooth, color=blue]
-			(\x,{1*\x-(x^3/6)});
+			(\x,{1*\x-((x^3)/6)});
 			\end{axis}
 			\end{tikzpicture}
 			\caption{Prikaz funkcije $f(x)=\sin x$ (crveno) i interpolacije te funkcije polinomom trećeg stupnja $P(x)=1x-\frac{1}{6}x^3$ (plavo)}
 		\end{figure}
-		\subsection{$g(x)=\frac{1}{x^2 +1}$}
+		Ostatak rezultata je izračunat računalom. Ti su rezultati prikazan u tablici \ref{kubInterpolTablicaSin}.
+		\subsection{Zadatak 10 - $g(x)=\frac{1}{x^2 +1}$}
 		Idući primjer je zadan:
 		\begin{equation*}
 			g(x)=\frac{1}{x^2+1},\quad x\in [-5,5],\quad n=1,\ldots,40 
@@ -399,6 +402,9 @@ for i:=1 to n do
 			\caption{Prikaz funkcije $g(x)=\frac{1}{x^2 +1}$ (crveno) i interpolacije te funkcije polinomom trećeg stupnja $P(x)=1-2x^2$ (plavo)}
 		\end{figure}
 \chapter{Zaključak}
+Kroz ovaj smo rad uspjeli steći osjećaj za interpolaciju i definirali smo osnovne pojmove vezane uz tu temu. Svi primjeri su vizualno potkrijepljeni tako da se sve izračunato može i doživjeti. 
+
+U cijelom nam je radu pomogao \LaTeX\ pomoću kojeg je pisan rad, \texttt{Python} pomoću kojeg su generirane sve tablice i većina slika te \texttt{GitHub} koji nam je pomogao u verzioniranju projekta i organizaciji.
 \chapter{Dodatak}
 	U ovom poglavlju se nalaze tablice koje bi svojom veličinom kvarile ugodnost čitanja te su stavljene na kraj. Na mjestima gdje su pozvane su napravljene poveznice do njih tako da su jednostavno pristupačne klikom na njih.
 		\begin{table}
@@ -505,6 +511,59 @@ for i:=1 to n do
 	\caption{
 		Prikaz svih čvorova funkcije $g(x)=\frac{1}{x^2 +1}$, jednadžbe pravca koja interpolira između dviju susjednih točaka te razlika između vrijednosti funkcije u točki $x=1.2$ i interpolacije u istoj točki. U izračunu je korišten maksimalni broj decimala koliko podržava tip podataka \texttt{float} iz \texttt{Python} biblioteke \texttt{Numpy}. Radi preglednosti je prikazan manji broj decimala. Izvor: autorska izrada}
 	\label{linInterpolTablicaDva}
+\end{table}
+	\begin{table}
+	\rowcolors{1}{}{lightgray}
+	\begin{center}		
+		\begin{tabular}{c c c|c | c}
+			$C_0$&$C_1$&$C_2$&$C_3$&Razlika\\\hline
+0.0000 & 1.0000 & -0.0000 & -0.1667 & -0.0993 \\
+0.1564 & 0.9877 & -0.0782 & -0.1646 & -0.0074 \\
+0.3090 & 0.9511 & -0.1545 & -0.1585 & 0.0640 \\
+0.4540 & 0.8910 & -0.2270 & -0.1485 & 0.1131 \\
+0.5878 & 0.8090 & -0.2939 & -0.1348 & 0.1386 \\
+0.7071 & 0.7071 & -0.3536 & -0.1179 & 0.1401 \\
+0.8090 & 0.5878 & -0.4045 & -0.0980 & 0.1174 \\
+0.8910 & 0.4540 & -0.4455 & -0.0757 & 0.0710 \\
+0.9511 & 0.3090 & -0.4755 & -0.0515 & 0.0022 \\
+0.9877 & 0.1564 & -0.4938 & -0.0261 & -0.0874 \\
+1.0000 & 0.0000 & -0.5000 & -0.0000 & -0.1955 \\
+0.9877 & -0.1564 & -0.4938 & 0.0261 & -0.3196 \\
+0.9511 & -0.3090 & -0.4755 & 0.0515 & -0.4565 \\
+0.8910 & -0.4540 & -0.4455 & 0.0757 & -0.6029 \\
+0.8090 & -0.5878 & -0.4045 & 0.0980 & -0.7551 \\
+0.7071 & -0.7071 & -0.3536 & 0.1179 & -0.9095 \\
+0.5878 & -0.8090 & -0.2939 & 0.1348 & -1.0622 \\
+0.4540 & -0.8910 & -0.2270 & 0.1485 & -1.2095 \\
+0.3090 & -0.9511 & -0.1545 & 0.1585 & -1.3477 \\
+0.1564 & -0.9877 & -0.0782 & 0.1646 & -1.4734 \\
+0.0000 & -1.0000 & -0.0000 & 0.1667 & -1.5836 \\
+-0.1564 & -0.9877 & 0.0782 & 0.1646 & -1.6756 \\
+-0.3090 & -0.9511 & 0.1545 & 0.1585 & -1.7469 \\
+-0.4540 & -0.8910 & 0.2270 & 0.1485 & -1.7960 \\
+-0.5878 & -0.8090 & 0.2939 & 0.1348 & -1.8216 \\
+-0.7071 & -0.7071 & 0.3536 & 0.1179 & -1.8230 \\
+-0.8090 & -0.5878 & 0.4045 & 0.0980 & -1.8003 \\
+-0.8910 & -0.4540 & 0.4455 & 0.0757 & -1.7540 \\
+-0.9511 & -0.3090 & 0.4755 & 0.0515 & -1.6852 \\
+-0.9877 & -0.1564 & 0.4938 & 0.0261 & -1.5956 \\
+-1.0000 & -0.0000 & 0.5000 & 0.0000 & -1.4874 \\
+-0.9877 & 0.1564 & 0.4938 & -0.0261 & -1.3634 \\
+-0.9511 & 0.3090 & 0.4755 & -0.0515 & -1.2265 \\
+-0.8910 & 0.4540 & 0.4455 & -0.0757 & -1.0801 \\
+-0.8090 & 0.5878 & 0.4045 & -0.0980 & -0.9278 \\
+-0.7071 & 0.7071 & 0.3536 & -0.1179 & -0.7734 \\
+-0.5878 & 0.8090 & 0.2939 & -0.1348 & -0.6207 \\
+-0.4540 & 0.8910 & 0.2270 & -0.1485 & -0.4735 \\
+-0.3090 & 0.9511 & 0.1545 & -0.1585 & -0.3352 \\
+-0.1564 & 0.9877 & 0.0782 & -0.1646 & -0.2095 \\
+			
+			
+		\end{tabular}
+	\end{center}
+	\caption{
+		Prikaz svih čvorova funkcije $f(x)=\sin(x)$, jednadžbe polinoma trećeg stupnja (prema formuli opisanoj ranije u radu) koja interpolira između dviju susjednih točaka te razlika između vrijednosti funkcije u točki $x=1$ i interpolacije u istoj točki. U izračunu je korišten maksimalni broj decimala koliko podržava tip podataka \texttt{float} iz \texttt{Python} biblioteke \texttt{Numpy}. Radi preglednosti je prikazan manji broj decimala. Izvor: autorska izrada}
+	\label{kubInterpolTablicaSin}
 \end{table}
 \bibliography{lib}{}
 \bibliographystyle{plain}

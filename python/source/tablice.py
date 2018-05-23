@@ -146,24 +146,51 @@ def kub_sin_table():
     b = 2 * np.pi
     a = 0
     n = 40
-    h = 2 * np.pi
     h = (b - a) / n
+
     print("c0\t\t c1\t\t\t c2\t\t\t c3\t\t razlika do f(1)")
     print("_________________________________________________________________________________________")
     for i in range(0, n):
         x = a + i * h
+        x0=a+(i-1)*h
         c0 = np.sin(x)
         c1 = np.cos(x)
         c2 = -np.sin(x) / 2
         c3 = -np.cos(x) / 6
 
         fx=np.sin(1)
-        razlika = (c3*fx**3+c2*fx**2+c1*fx+c0) + fx
+        razlika = (c3 * fx ** 3 + c2 * fx ** 2 + c1 * fx + c0) - fx
+
         print(format(c0, '.4f'), '\t',
               format(c1, '.4f'), '\t',
               format(c2, '.4f'), '\t',
               format(c3, '.4f'), '\t',
               format(razlika, '.4f'))
+
+def kub_sin_latex():
+    b = 2 * np.pi
+    a = 0
+    n = 40
+    h = (b - a) / n
+
+    print("c0\t\t c1\t\t\t c2\t\t\t c3\t\t razlika do f(1)")
+    print("_________________________________________________________________________________________")
+    for i in range(0, n):
+        x = a + i * h
+        x0=a+(i-1)*h
+        c0 = np.sin(x)
+        c1 = np.cos(x)
+        c2 = -np.sin(x) / 2
+        c3 = -np.cos(x) / 6
+
+        fx=np.sin(1)
+        razlika = (c3 * fx ** 3 + c2 * fx ** 2 + c1 * fx + c0) - fx
+
+        print(format(c0, '.4f'), '&',
+              format(c1, '.4f'), '&',
+              format(c2, '.4f'), '&',
+              format(c3, '.4f'), '&',
+              format(razlika, '.4f'), "\\\\")
 
 
 def kubicni_prvi():
@@ -187,6 +214,7 @@ def meni(odabir):
         kub_sin_table()
         pass
     elif odabir == 6:
+        kub_sin_latex()
         pass
     elif odabir == 7:
         pass
@@ -222,14 +250,14 @@ while unos != 0:
           "\nRacunanje tablica za funkciju f(x)=1/(x^2+1)"
           "\n   7. plain text tablica"
           "\n   8. LaTeX export tablica"
-          "\n\nGENERIRANJE SLIKA"
-          "\n-----------------"
-          "\nLinearna interpolacija (40 slika):"
-          "\n   9. prikaz na nacin da se vidi samo isjecak funkcije"
-          "\n   10. prikaz na nacin da se vidi cijela funkcija"
-          "\nKubicna interpolacija (40 slika):"
-          "\n   11. prikaz na nacin da se vidi samo isjecak funkcije"
-          "\n   12. prikaz na nacin da se vidi cijela funkcija"
-          "")
+          # "\n\nGENERIRANJE SLIKA"
+          # "\n-----------------"
+          # "\nLinearna interpolacija (40 slika):"
+          # "\n   9. prikaz na nacin da se vidi samo isjecak funkcije"
+          # "\n   10. prikaz na nacin da se vidi cijela funkcija"
+          # "\nKubicna interpolacija (40 slika):"
+          # "\n   11. prikaz na nacin da se vidi samo isjecak funkcije"
+          # "\n   12. prikaz na nacin da se vidi cijela funkcija"
+          )
     unos = int(input("Vas odabir: "))
     meni(unos)
