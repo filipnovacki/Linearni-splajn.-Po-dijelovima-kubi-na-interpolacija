@@ -31,7 +31,7 @@
 	Sve pripadajuće slike su pospremljene u mapama projekta, no znajući da se odmah neće svi moći snalaziti u mapa projekta, detaljniji se opisi nalaze na Wiki sustavu GitHuba na poveznici: \url{https://github.com/filipnovacki/linearni-splajn/wiki}.
 \chapter{Zadaci}
 	\section{Opis glavne ideje po dijelovima polinomne interpolacije}
-	Kod raznih mjerenja, istraživanja i sl. se događa da rezultati nekog testiranja budu podaci koji su diskretni, odnosno izmjereni su za neke vrijednosti. Kako bi nam te vrijednosti bile korisne i primjenjive, moramo na neki način odrediti koje su vrijednosti između dviju diskretnih vrijednosti. Tu u priču dolazi interpolacija. \footnote{Zadatak 1 - glavn ideje po dijelovima polinomne interpolacije}
+	Kod raznih mjerenja, istraživanja i sl. se događa da rezultati nekog testiranja budu podaci koji su diskretni, odnosno izmjereni su za neke vrijednosti. Kako bi nam te vrijednosti bile korisne i primjenjive, moramo na neki način odrediti koje su vrijednosti između dviju diskretnih vrijednosti. Tu u priču dolazi interpolacija. \footnote{Zadatak 1 - glavne ideje po dijelovima polinomne interpolacije}
 	
 	\begin{wrapfigure}{r}{0.55\textwidth}
 		\includegraphics[width=0.55\textwidth]{slike/usporedba.png}
@@ -100,7 +100,7 @@
 	
 	\section{Zadatak 2 - Opis linearnog splajna}
 	
-	Kao što smo već objasnili spajn ranije, on nam služi za dobivanje vrijednosti koji su između dviju izmjerenih vrijednosti.
+	Kao što smo već objasnili ranije, splajn nam služi za dobivanje vrijednosti koje su između dviju izmjerenih vrijednosti.
 	
 	\begin{minipage}{0.4\textwidth}
 	\begin{table}[H]
@@ -177,7 +177,7 @@
 	\end{minipage}
 	Pogledajmo tablicu \ref{dzsStan} i pripadni graf. U ovim podacima vidimo popise stanovništa za svaku treću godinu. Linearni splajn bi nam ovdje pomogao da prepostavimo koliko je moglo biti stanovnika između dvaju izmjerenih razdoblja.
 	
-	Prednosti linearnog splajna su što vrlo jednostavne za izračunati za bilo koju točku, kao što ćemo vidjeti u primjerima. Glavni nedostatak linearne interpolacije je to što može doći do značajnih odstupanja kod nelinearnih funkcija koji su česti u fizici, kemiji i sl.
+	Prednosti linearnog splajna su što vrlo jednostavni za izračunati za bilo koju točku, kao što ćemo vidjeti u primjerima. Glavni nedostatak linearne interpolacije je to što može doći do značajnih odstupanja kod nelinearnih funkcija koji su česti u fizici, kemiji i sl\footnote{Zadatak 6 - glavni nedostaci linearnih splajnova}.
 	\section{Primjeri}
 		\subsection{Zadatak 3 - Algoritam za traženje linearnog splajna}
 		Neka je zadana neprekidna funkcija $f:[a,b]\rightarrow \mathbb{R} $ i neka je segment $[a,b]$ podijeljen na $n$ jednakih dijelova, tj. neka su
@@ -248,7 +248,7 @@
 				y=1.0041242039539873x
 				\label{linInt1}
 			\end{equation}
-			Kad razmislimo o rješenju, vidimo da ono ima smisla jer prolazi kroz ishodište, a nagib je skoro jednak 1, što također ima smisla jer koordinate točke skoro jednake. Osim toga, i grafički rješenje ima smisla, što možemo vidjeti na slici \ref{linInterSlika1}.
+			Kad razmislimo o rješenju, vidimo da ono ima smisla jer prolazi kroz ishodište, a nagib je skoro jednak 1, što također ima smisla jer su koordinate točke skoro jednake. Osim toga, i grafički rješenje ima smisla, što možemo vidjeti na slici \ref{linInterSlika1}.
 			\begin{figure}[H]
 				\centering
 				\begin{minipage}{.5\textwidth}
